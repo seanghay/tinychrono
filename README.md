@@ -74,3 +74,4 @@ console.log(content);
 - [ ] Parse string to weekday objects
 - [ ] Use Rollup to build ESM and UMD 
 - [ ] types.d.ts
+- [ ] Expose utility functions
