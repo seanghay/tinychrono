@@ -1,0 +1,29 @@
+{
+  "name": "tinychrono",
+  "version": "1.0.0",
+  "description": "Create short operation hour range",
+  "main": "src/main.js",
+  "scripts": {
+    "test": "jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/seanghay/tinychrono.git"
+  },
+  "keywords": [
+    "time",
+    "hour",
+    "datetime",
+    "range"
+  ],
+  "author": "Seanghay Yath <seanghay.dev@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/seanghay/tinychrono/issues"
+  },
+  "homepage": "https://github.com/seanghay/tinychrono#readme",
+  "devDependencies": {
+    "@types/jest": "^27.0.2",
+    "jest": "^27.3.1"
+  }
+}
