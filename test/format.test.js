@@ -1,4 +1,4 @@
-const { formatTimeRange } = require("../src/main");
+const { formatTimeRange, formatWeekdays } = require("../src/main");
 const fixtures = require("./fixtures");
 
 describe('format', () => {
@@ -15,7 +15,7 @@ describe('format', () => {
         type: 'RANGE',
         weekday: 1,
       })
-    ).toEqual('Monday - CLOSED');
+    ).toEqual('Monday - Closed');
   });
 
 
@@ -27,7 +27,7 @@ describe('format', () => {
         hours: [],
 
       })
-    ).toEqual("Monday - CLOSED");
+    ).toEqual("Monday - Closed");
   });
 
   it('should throw error when providing invalid hour range', () => {
@@ -39,7 +39,6 @@ describe('format', () => {
       })
     ).toThrowError()
   })
-
 
   it('should format RANGE hours', () => {
     expect(
@@ -53,5 +52,33 @@ describe('format', () => {
       })
     ).toEqual("Monday - 08:00 AM-04:00 PM, 06:00 PM-10:30 PM");
   })
+
+  it('should format CLOSED weekday', () => {
+    expect(formatTimeRange({
+      type: 'CLOSED',
+      weekday: 1,
+    })).toEqual('Monday - Closed')
+  })
+
+  it('should format multiple weekdays open everyday', () => {
+    expect(formatWeekdays(fixtures.everyday)).toEqual(
+      'Sunday - Open 24/7\n' +
+      'Monday - Open 24/7\n' +
+      'Tuesday - Open 24/7\n' +
+      'Wednesday - Open 24/7\n' +
+      'Thursday - Open 24/7\n' +
+      'Friday - Open 24/7\n' +
+      'Saturday - Open 24/7'
+    );
+  })
+
+  it("should format multiple weekdays", () => {
+    expect(formatWeekdays(fixtures.threedays)).toEqual(
+      "Monday - 08:00 AM-05:00 PM\n" +
+        "Tuesday - 08:00 AM-05:00 PM\n" +
+        "Wednesday - 08:00 AM-05:00 PM"
+    );
+  });
+
 
 })

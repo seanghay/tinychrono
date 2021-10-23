@@ -32,7 +32,7 @@ function formatTimeRange({ type: _type, hours, weekday: _weekday }) {
   if (type === 'RANGE') {
     
     if (!hours) {
-      return `${weekdayName} - CLOSED`;
+      return `${weekdayName} - Closed`;
     }
 
     if (!Array.isArray(hours)) {
@@ -40,7 +40,7 @@ function formatTimeRange({ type: _type, hours, weekday: _weekday }) {
     }
 
     if (hours.length === 0) {
-      return `${weekdayName} - CLOSED`;
+      return `${weekdayName} - Closed`;
     }
 
     if (!hours.every(hourRange => hourRange.length >= 2)) {
@@ -60,9 +60,21 @@ function formatTimeRange({ type: _type, hours, weekday: _weekday }) {
     return `${weekdayName} - Open 24/7`
   }
 
-  throw new Error('Unimplemented!');
+  if (type === 'CLOSED') {
+    return `${weekdayName} - Closed`;
+  }
+    
 }
+
+function formatWeekdays(items = []) {
+  if (!Array.isArray(items)) throw new Error('Invalid data');
+  return items.map(weekday => formatTimeRange(weekday)).join(
+    '\n'
+  );
+}
+
 
 module.exports = {
   formatTimeRange,
+  formatWeekdays,
 };

@@ -1,5 +1,6 @@
 
 module.exports = {
-  everyday: require('./everyday')
+  everyday: require('./everyday'),
+  threedays: require('./threedays'),
 }
 
