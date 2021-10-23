@@ -67,3 +67,10 @@ console.log(content);
 // Saturday - Closed
 // Sunday - 07:00 AM-11:00 AM
 ```
+
+## Milestone
+
+- [x] Format Weekdays  
+- [ ] Parse string to weekday objects
+- [ ] Use Rollup to build ESM and UMD 
+- [ ] types.d.ts
