@@ -1,6 +1,6 @@
 {
   "name": "tinychrono",
-  "version": "1.0.0",
+  "version": "0.0.1",
   "description": "Create short operation hour range",
   "main": "src/main.js",
   "scripts": {
