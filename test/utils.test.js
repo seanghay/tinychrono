@@ -81,4 +81,20 @@ describe("utility functions", () => {
     });
   
   });
+
+
+  it("should decode military time -> PM pad=1", () => {
+    const fixures = [
+      ["10:0 PM", 2200],
+      ["11:50 PM", 2350],
+      ["7:50 PM", 1950],
+      ["6:50 PM", 1850],
+      ["12:50 PM", 1250],
+    ];
+
+    fixures.forEach(([result, input]) => {
+      expect(decodeMilitaryHour(input, 1)).toEqual(result);
+    });
+  });
+
 });

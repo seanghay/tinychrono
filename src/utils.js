@@ -47,7 +47,7 @@ function encodeMilitaryHour(value) {
  * @param {number} value
  * @returns {string}
  */
-function decodeMilitaryHour(value) {
+function decodeMilitaryHour(value, pad = 2) {
   let hour = Math.floor(value / 100);
   let minute = value % 100;
 
@@ -60,8 +60,8 @@ function decodeMilitaryHour(value) {
   if (hour > 12) hour %= 12;
   if (hour === 0) hour = 12;
   
-  hour = hour.toString().padStart(2, 0);
-  minute = minute.toString().padStart(2, 0);
+  hour = hour.toString().padStart(pad, 0);
+  minute = minute.toString().padStart(pad, 0);
 
   return `${hour}:${minute} ${isAM ? 'AM' : 'PM'}`;
 }
