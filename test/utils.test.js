@@ -94,7 +94,7 @@ describe("utility functions", () => {
     });
   });
 
-  it("should return weekday  at specific index", () => {
+  it("should return day name  at specific index", () => {
     
     const DAYS = [
       "Sunday",

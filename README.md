@@ -13,7 +13,7 @@ npm install tinychrono
 
 ## Basic Usage
 
-Single weekday
+Single day
 
 ```js
 const { formatTimeRange } = require('tinychrono');
@@ -31,7 +31,7 @@ console.log(content);
 // Monday - 08:30 AM-12:00 PM, 01:00 PM-05:40 PM
 
 ```
-## Multiple Weekdays
+## Multiple Days
 
 ```js
 const { formatDays } = require('tinychrono');
@@ -71,7 +71,7 @@ console.log(content);
 ## Milestone
 
 - [x] Format Days  
-- [ ] Parse string to weekday objects
+- [ ] Parse string to day objects
 - [ ] Use Rollup to build ESM and UMD 
 - [ ] types.d.ts
 - [ ] Expose utility functions
