@@ -3,7 +3,7 @@ const {
   parseIntRange,
   encodeMilitaryHour,
   decodeMilitaryHour,
-  weekdayAt,
+  dayAt,
 } = require("../src/utils");
 
 
@@ -96,7 +96,7 @@ describe("utility functions", () => {
 
   it("should return weekday  at specific index", () => {
     
-    const WEEKDAYS = [
+    const DAYS = [
       "Sunday",
       "Monday",
       "Tuesday",
@@ -106,8 +106,8 @@ describe("utility functions", () => {
       "Saturday",
     ];
 
-    WEEKDAYS.forEach((day, index) => expect(weekdayAt(index)).toEqual(day));
-    expect(weekdayAt(7)).toEqual(WEEKDAYS[0])
+    DAYS.forEach((day, index) => expect(dayAt(index)).toEqual(day));
+    expect(dayAt(7)).toEqual(DAYS[0]);
   });
 
 });

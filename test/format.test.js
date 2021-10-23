@@ -1,4 +1,4 @@
-const { formatTimeRange, formatWeekdays } = require("../src/main");
+const { formatTimeRange, formatdays, formatDays } = require("../src/main");
 const fixtures = require("./fixtures");
 
 describe('format', () => {
@@ -13,7 +13,7 @@ describe('format', () => {
     expect(
       formatTimeRange({
         type: 'RANGE',
-        weekday: 1,
+        day: 1,
       })
     ).toEqual('Monday - Closed');
   });
@@ -23,7 +23,7 @@ describe('format', () => {
     expect(
       formatTimeRange({
         type: "RANGE",
-        weekday: 1,
+        day: 1,
         hours: [],
 
       })
@@ -34,7 +34,7 @@ describe('format', () => {
     expect(
       () => formatTimeRange({
         type: "RANGE",
-        weekday: 1,
+        day: 1,
         hours: [{}],
       })
     ).toThrowError()
@@ -44,7 +44,7 @@ describe('format', () => {
     expect(
       formatTimeRange({
         type: "RANGE",
-        weekday: 1,
+        day: 1,
         hours: [
           [800, 1600],
           [1800, 2230],
@@ -53,15 +53,15 @@ describe('format', () => {
     ).toEqual("Monday - 08:00 AM-04:00 PM, 06:00 PM-10:30 PM");
   })
 
-  it('should format CLOSED weekday', () => {
+  it('should format CLOSED day', () => {
     expect(formatTimeRange({
       type: 'CLOSED',
-      weekday: 1,
+      day: 1,
     })).toEqual('Monday - Closed')
   })
 
-  it('should format multiple weekdays open everyday', () => {
-    expect(formatWeekdays(fixtures.everyday)).toEqual(
+  it('should format multiple days open everyday', () => {
+    expect(formatDays(fixtures.everyday)).toEqual(
       'Sunday - Open 24/7\n' +
       'Monday - Open 24/7\n' +
       'Tuesday - Open 24/7\n' +
@@ -72,8 +72,8 @@ describe('format', () => {
     );
   })
 
-  it("should format multiple weekdays", () => {
-    expect(formatWeekdays(fixtures.threedays)).toEqual(
+  it("should format multiple days", () => {
+    expect(formatDays(fixtures.threedays)).toEqual(
       "Monday - 08:00 AM-05:00 PM\n" +
         "Tuesday - 08:00 AM-05:00 PM\n" +
         "Wednesday - 08:00 AM-05:00 PM"

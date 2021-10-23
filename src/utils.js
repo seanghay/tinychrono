@@ -65,7 +65,7 @@ function decodeMilitaryHour(value, pad = 2) {
   return `${hour}:${minute} ${isAM ? "AM" : "PM"}`;
 }
 
-const WEEKDAYS = [
+const DAYS = [
   'Sunday',
   'Monday',
   'Tuesday',
@@ -75,28 +75,14 @@ const WEEKDAYS = [
   'Saturday',
 ]
 
-function weekdayAt(index) {
-  return WEEKDAYS[index % WEEKDAYS.length]
+function dayAt(index) {
+  return DAYS[index % DAYS.length];
 }
-
-// mode = ['FULL', 'CLOSED', 'RANGE']
-
-const operationTimes = [
-  {
-    weekday: 0,
-    type: "RANGE",
-    hours: [
-      [1000, 2000],
-      [2200, 2230],
-    ],
-  },
-  
-];
 
 module.exports = {
   createIntRange,
   parseIntRange,
   encodeMilitaryHour,
   decodeMilitaryHour,
-  weekdayAt,
+  dayAt,
 };

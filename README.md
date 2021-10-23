@@ -19,7 +19,7 @@ Single weekday
 const { formatTimeRange } = require('tinychrono');
 
 const content = formatTimeRange({
-  weekday: 1,
+  day: 1,
   type: 'RANGE',
   hours: [
     [830, 1200],
@@ -34,11 +34,11 @@ console.log(content);
 ## Multiple Weekdays
 
 ```js
-const { formatWeekdays } = require('tinychrono');
+const { formatDays } = require('tinychrono');
 
-const content = formatWeekdays([
+const content = formatDays([
   {
-    weekday: 1,
+    day: 1,
     type: 'RANGE',
     hours: [
       [830, 1200],
@@ -46,15 +46,15 @@ const content = formatWeekdays([
     ],
   },
   {
-    weekday: 5,
+    day: 5,
     type: 'FULL_DAY',
   },
   {
-    weekday: 6,
+    day: 6,
     type: 'CLOSED',
   },
   {
-    weekday: 0,
+    day: 0,
     type: 'RANGE',
     hours: [[700, 1100]],
   },
@@ -70,7 +70,7 @@ console.log(content);
 
 ## Milestone
 
-- [x] Format Weekdays  
+- [x] Format Days  
 - [ ] Parse string to weekday objects
 - [ ] Use Rollup to build ESM and UMD 
 - [ ] types.d.ts

@@ -1,4 +1,4 @@
-const { weekdayAt, createIntRange, parseIntRange, decodeMilitaryHour } = require("./utils");
+const { dayAt, parseIntRange, decodeMilitaryHour } = require("./utils");
 
 function parseType(value) {
   if (typeof value !== 'string') return null;
@@ -10,29 +10,27 @@ function parseType(value) {
 }
 
 
-function parseWeekday(at) {
+function parseDay(at) {
   if (typeof at !== 'number') return null;
   if (at < 0) return null;
   if (at > 6) return null;
   return at;
 }
 
-
-
-function formatTimeRange({ type: _type, hours, weekday: _weekday }) {
+function formatTimeRange({ type: _type, hours, day: _day }) {
   
   const type = parseType(_type);
   if (!type) throw new Error('type is invalid. please use either FULL_DAY, CLOSED, or RANGE');
   
-  const weekday = parseWeekday(_weekday);
-  if (weekday === null) throw new Error('weekday is out of range.');
+  const day = parseDay(_day);
+  if (day === null) throw new Error('day is out of range.');
 
-  const weekdayName = weekdayAt(weekday);
+  const dayName = dayAt(day);
 
   if (type === 'RANGE') {
     
     if (!hours) {
-      return `${weekdayName} - Closed`;
+      return `${dayName} - Closed`;
     }
 
     if (!Array.isArray(hours)) {
@@ -40,7 +38,7 @@ function formatTimeRange({ type: _type, hours, weekday: _weekday }) {
     }
 
     if (hours.length === 0) {
-      return `${weekdayName} - Closed`;
+      return `${dayName} - Closed`;
     }
 
     if (!hours.every(hourRange => hourRange.length >= 2)) {
@@ -53,28 +51,26 @@ function formatTimeRange({ type: _type, hours, weekday: _weekday }) {
       .map(([from, to]) => `${decodeMilitaryHour(from)}-${decodeMilitaryHour(to)}`)
       .join(', ')
     
-    return `${weekdayName} - ${rangeString}`;
+    return `${dayName} - ${rangeString}`;
   }
 
   if (type === 'FULL_DAY') {
-    return `${weekdayName} - Open 24/7`
+    return `${dayName} - Open 24/7`;
   }
 
   if (type === 'CLOSED') {
-    return `${weekdayName} - Closed`;
+    return `${dayName} - Closed`;
   }
     
 }
 
-function formatWeekdays(items = []) {
+function formatDays(items = []) {
   if (!Array.isArray(items)) throw new Error('Invalid data');
-  return items.map(weekday => formatTimeRange(weekday)).join(
-    '\n'
-  );
+  return items.map((day) => formatTimeRange(day)).join("\n");
 }
 
 
 module.exports = {
   formatTimeRange,
-  formatWeekdays,
+  formatDays,
 };

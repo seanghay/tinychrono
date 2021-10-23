@@ -1,15 +1,13 @@
-const { weekdayAt } = require("../../src/utils");
+const { dayAt } = require("../../src/utils");
 
 const items = [];
 
 for (let i = 1; i < 4; i++) {
   items.push({
-    weekday: i,
+    day: i,
     type: "RANGE",
-    name: weekdayAt(i),
-    hours: [
-      [800, 1700]
-    ]
+    name: dayAt(i),
+    hours: [[800, 1700]],
   });
 
 }
