@@ -3,7 +3,9 @@ const {
   parseIntRange,
   encodeMilitaryHour,
   decodeMilitaryHour,
+  weekdayAt,
 } = require("../src/utils");
+
 
 describe("utility functions", () => {
   it("should create an array from two integers", () => {
@@ -48,9 +50,7 @@ describe("utility functions", () => {
     fixures.forEach(([result, input]) => {
       expect(decodeMilitaryHour(input)).toEqual(result);
     });
-    
   });
-
 
   it("should decode military time -> PM", () => {
     const fixures = [
@@ -67,7 +67,6 @@ describe("utility functions", () => {
   });
 
   it("should decode military time -> PM", () => {
-    
     const fixures = [
       ["10:00 PM", 2200],
       ["11:50 PM", 2350],
@@ -79,9 +78,7 @@ describe("utility functions", () => {
     fixures.forEach(([result, input]) => {
       expect(decodeMilitaryHour(input)).toEqual(result);
     });
-  
   });
-
 
   it("should decode military time -> PM pad=1", () => {
     const fixures = [
@@ -95,6 +92,22 @@ describe("utility functions", () => {
     fixures.forEach(([result, input]) => {
       expect(decodeMilitaryHour(input, 1)).toEqual(result);
     });
+  });
+
+  it("should return weekday  at specific index", () => {
+    
+    const WEEKDAYS = [
+      "Sunday",
+      "Monday",
+      "Tuesday",
+      "Wednesday",
+      "Thursday",
+      "Friday",
+      "Saturday",
+    ];
+
+    WEEKDAYS.forEach((day, index) => expect(weekdayAt(index)).toEqual(day));
+    expect(weekdayAt(7)).toEqual(WEEKDAYS[0])
   });
 
 });
