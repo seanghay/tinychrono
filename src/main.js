@@ -17,7 +17,7 @@ function parseDay(at) {
   return at;
 }
 
-function formatTimeRange({ type: _type, hours, day: _day }) {
+function formatTimeRange({ type: _type, hours, day: _day }, options = {}) {
   
   const type = parseType(_type);
   if (!type) throw new Error('type is invalid. please use either FULL_DAY, CLOSED, or RANGE');
@@ -25,7 +25,7 @@ function formatTimeRange({ type: _type, hours, day: _day }) {
   const day = parseDay(_day);
   if (day === null) throw new Error('day is out of range.');
 
-  const dayName = dayAt(day);
+  const dayName = dayAt(day, options.days);
 
   if (type === 'RANGE') {
     
@@ -64,9 +64,9 @@ function formatTimeRange({ type: _type, hours, day: _day }) {
     
 }
 
-function formatDays(items = []) {
+function formatDays(items = [], options = {}) {
   if (!Array.isArray(items)) throw new Error('Invalid data');
-  return items.map((day) => formatTimeRange(day)).join("\n");
+  return items.map((day) => formatTimeRange(day, options)).join("\n");
 }
 
 

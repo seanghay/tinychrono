@@ -81,4 +81,23 @@ describe('format', () => {
   });
 
 
+  it('should format multiple days with localization', () => {
+
+    const DAYS = [
+      "ថ្ងៃអាទិត្យ",
+      "ថ្ងៃច័ន្ទ",
+      "ថ្ងៃអង្គារ",
+      "ថ្ងៃពុធ",
+      "ថ្ងៃព្រហស្បតិ៍",
+      "ថ្ងៃសុក្រ",
+      "ថ្ងៃសៅរ៍",
+    ];
+
+    expect(formatDays(fixtures.threedays, { days: DAYS })).toEqual(
+      "ថ្ងៃច័ន្ទ: 08:00 AM - 05:00 PM\n" +
+        "ថ្ងៃអង្គារ: 08:00 AM - 05:00 PM\n" +
+        "ថ្ងៃពុធ: 08:00 AM - 05:00 PM"
+    );
+  })
+
 })

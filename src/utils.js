@@ -73,10 +73,10 @@ const DAYS = [
   'Thursday',
   'Friday',
   'Saturday',
-]
+];
 
-function dayAt(index) {
-  return DAYS[index % DAYS.length];
+function dayAt(index, days = DAYS) {
+  return days[index % days.length];
 }
 
 module.exports = {
