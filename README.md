@@ -122,3 +122,4 @@ console.log(content);
 - [ ] Use Rollup to build ESM and UMD 
 - [ ] types.d.ts
 - [ ] Expose utility functions
+- [ ] Use pattern for formatting
