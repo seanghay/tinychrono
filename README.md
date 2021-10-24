@@ -28,7 +28,7 @@ const content = formatTimeRange({
 });
 
 console.log(content);
-// Monday - 08:30 AM-12:00 PM, 01:00 PM-05:40 PM
+// Monday: 08:30 AM - 12:00 PM, 01:00 PM - 05:40 PM
 
 ```
 ## Multiple Days
@@ -62,10 +62,10 @@ const content = formatDays([
 
 console.log(content);
 
-// Monday - 08:30 AM-12:00 PM, 01:00 PM-05:40 PM
-// Friday - Open 24/7
-// Saturday - Closed
-// Sunday - 07:00 AM-11:00 AM
+// Monday: 08:30 AM - 12:00 PM, 01:00 PM - 05:40 PM
+// Friday: Open 24/7
+// Saturday: Closed
+// Sunday: 07:00 AM - 11:00 AM
 ```
 
 ## Milestone

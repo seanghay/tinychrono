@@ -30,7 +30,7 @@ function formatTimeRange({ type: _type, hours, day: _day }) {
   if (type === 'RANGE') {
     
     if (!hours) {
-      return `${dayName} - Closed`;
+      return `${dayName}: Closed`;
     }
 
     if (!Array.isArray(hours)) {
@@ -38,7 +38,7 @@ function formatTimeRange({ type: _type, hours, day: _day }) {
     }
 
     if (hours.length === 0) {
-      return `${dayName} - Closed`;
+      return `${dayName}: Closed`;
     }
 
     if (!hours.every(hourRange => hourRange.length >= 2)) {
@@ -48,18 +48,18 @@ function formatTimeRange({ type: _type, hours, day: _day }) {
     }
 
     const rangeString = hours.map(parseIntRange)
-      .map(([from, to]) => `${decodeMilitaryHour(from)}-${decodeMilitaryHour(to)}`)
+      .map(([from, to]) => `${decodeMilitaryHour(from)} - ${decodeMilitaryHour(to)}`)
       .join(', ')
     
-    return `${dayName} - ${rangeString}`;
+    return `${dayName}: ${rangeString}`;
   }
 
   if (type === 'FULL_DAY') {
-    return `${dayName} - Open 24/7`;
+    return `${dayName}: Open 24/7`;
   }
 
   if (type === 'CLOSED') {
-    return `${dayName} - Closed`;
+    return `${dayName}: Closed`;
   }
     
 }
