@@ -69,8 +69,7 @@ console.log(content);
 // Sunday: 07:00 AM - 11:00 AM
 ```
 
-### Autofill Missing Days
-
+## Autofill Missing Days
 
 ```js
 const { formatDays } = require('tinychrono');
