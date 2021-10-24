@@ -1,4 +1,4 @@
-const { dayAt, parseIntRange, decodeMilitaryHour } = require("./utils");
+const { dayAt, parseIntRange, decodeMilitaryHour, fillMissingDays } = require("./utils");
 
 function parseType(value) {
   if (typeof value !== 'string') return null;
@@ -66,6 +66,13 @@ function formatTimeRange({ type: _type, hours, day: _day }, options = {}) {
 
 function formatDays(items = [], options = {}) {
   if (!Array.isArray(items)) throw new Error('Invalid data');
+  const _autofill = options.autofill;
+
+
+  if (_autofill) {
+    items = fillMissingDays(items);
+  }
+
   return items.map((day) => formatTimeRange(day, options)).join("\n");
 }
 

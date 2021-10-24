@@ -80,6 +80,18 @@ describe('format', () => {
     );
   });
 
+    it("should format multiple days with autofill", () => {
+      expect(formatDays(fixtures.threedays, { autofill: true })).toEqual(
+        "Sunday: Closed\n" +
+        "Monday: 08:00 AM - 05:00 PM\n" +
+        "Tuesday: 08:00 AM - 05:00 PM\n" +
+        "Wednesday: 08:00 AM - 05:00 PM\n" +
+        "Thursday: Closed\n" +
+        "Friday: Closed\n" +
+        "Saturday: Closed"
+      );
+    });
+
 
   it('should format multiple days with localization', () => {
 

@@ -79,10 +79,32 @@ function dayAt(index, days = DAYS) {
   return days[index % days.length];
 }
 
+function fillMissingDays(days) {
+  const items = [...days];
+  for (let i = 0; i < 7; i++) {
+    if (!items.find(it => it.day === i)) {
+      items.push({
+        day: i,
+        type: "CLOSED",
+      });
+    }
+  }
+
+  const sortedItems = items.sort((a, b) => {
+    if (a.day > b.day) return 1
+    if (a.day < b.day) return -1
+    return 0;
+  });
+  
+  console.log(sortedItems)
+  return sortedItems;
+}
+
 module.exports = {
   createIntRange,
   parseIntRange,
   encodeMilitaryHour,
   decodeMilitaryHour,
   dayAt,
+  fillMissingDays,
 };
