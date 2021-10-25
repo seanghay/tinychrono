@@ -123,3 +123,4 @@ console.log(content);
 - [ ] types.d.ts
 - [ ] Expose utility functions
 - [ ] Use pattern for formatting
+- [ ] Date range comparision (e.g. Opening Now, Closed Now)
