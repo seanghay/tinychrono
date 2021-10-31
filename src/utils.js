@@ -28,7 +28,7 @@ function encodeMilitaryHour(value) {
   const isAM = value.slice(-2).toUpperCase() === "AM";
   const time = value.slice(0, -1).trim();
 
-  let [hour = '', minute = ''] = time.split(":");
+  let [hour = "", minute = ""] = time.split(":");
 
   hour = parseInt(hour.trim()) || 0;
   minute = parseInt(minute.trim()) || 0;
@@ -66,37 +66,36 @@ function decodeMilitaryHour(value, pad = 2) {
 }
 
 const DAYS = [
-  'Sunday',
-  'Monday',
-  'Tuesday',
-  'Wednesday',
-  'Thursday',
-  'Friday',
-  'Saturday',
+  "Sunday",
+  "Monday",
+  "Tuesday",
+  "Wednesday",
+  "Thursday",
+  "Friday",
+  "Saturday",
 ];
 
 function dayAt(index, days = DAYS) {
   return days[index % days.length];
 }
 
-function fillMissingDays(days) {
+function fillMissingDays(days, factory = (day) => ({ day, type: "CLOSED" })) {
   const items = [...days];
   for (let i = 0; i < 7; i++) {
-    if (!items.find(it => it.day === i)) {
-      items.push({
-        day: i,
-        type: "CLOSED",
-      });
+    if (!items.find((it) => it.day === i)) {
+      const value = factory(i);
+      if (value) {
+        items.push(value);
+      }
     }
   }
 
   const sortedItems = items.sort((a, b) => {
-    if (a.day > b.day) return 1
-    if (a.day < b.day) return -1
+    if (a.day > b.day) return 1;
+    if (a.day < b.day) return -1;
     return 0;
   });
-  
-  console.log(sortedItems)
+
   return sortedItems;
 }
 

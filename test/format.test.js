@@ -91,6 +91,23 @@ describe('format', () => {
         "Saturday: Closed"
       );
     });
+  
+  
+   it("should format multiple days with autofill as a factory function", () => {
+     expect(
+       formatDays(fixtures.threedays, {
+         autofill: (day) => ({ day, type: "FULL_DAY" }),
+       })
+     ).toEqual(
+       "Sunday: Open 24/7\n" +
+         "Monday: 08:00 AM - 05:00 PM\n" +
+         "Tuesday: 08:00 AM - 05:00 PM\n" +
+         "Wednesday: 08:00 AM - 05:00 PM\n" +
+         "Thursday: Open 24/7\n" +
+         "Friday: Open 24/7\n" +
+         "Saturday: Open 24/7"
+     );
+   });
 
 
   it('should format multiple days with localization', () => {
