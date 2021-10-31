@@ -124,3 +124,4 @@ console.log(content);
 - [ ] Expose utility functions
 - [ ] Use pattern for formatting
 - [ ] Date range comparison (e.g. Opening Now, Closed Now)
+- [ ] Status localization (Closed, Open 24/7)
