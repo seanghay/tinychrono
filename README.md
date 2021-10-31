@@ -117,7 +117,7 @@ console.log(content);
 - [x] Format Days  
 - [x] Day names localization
 - [x] Autofill missing days
-- [x] Autofill with default options or maybe with a factory function
+- [x] Autofill with default options or maybe with a factory function. [autofill now supports function as a factory](https://github.com/seanghay/tinychrono/commit/e866b9e7098a54e71f4b68a502a49fbb1be5b1c5)
 - [ ] Parse string to day objects
 - [ ] Use Rollup to build ESM and UMD 
 - [ ] types.d.ts
