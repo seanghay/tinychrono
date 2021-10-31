@@ -118,7 +118,7 @@ console.log(content);
 - [x] Format Days  
 - [x] Day names localization
 - [x] Autofill missing days
-- [ ] Autofill with default options or maybe with a factory function
+- [x] Autofill with default options or maybe with a factory function
 - [ ] Parse string to day objects
 - [ ] Use Rollup to build ESM and UMD 
 - [ ] types.d.ts
